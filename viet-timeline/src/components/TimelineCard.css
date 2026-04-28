@@ -1,0 +1,98 @@
+.timeline-card {
+    flex: 0 0 auto;
+    width: 350px;
+}
+
+.timelineCard-img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.card-base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease, filter 0.5s ease;
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.card-base.focused {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+    filter: none;
+    z-index: 10;
+}
+
+.card-base.exiting {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+}
+
+.card-base.focused-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    transform: translate(-50%, -50%) scale(1.2) !important;
+}
+
+/* CENTER CARD */
+.card-base.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 3;
+  filter: none;
+}
+
+/* LEFT CARD */
+.card-base.left {
+  transform: translate(-150%, -50%) scale(0.8);
+  opacity: 0.4;
+  z-index: 2;
+}
+
+/* RIGHT CARD */
+.card-base.right {
+  transform: translate(50%, -50%) scale(0.8);
+  opacity: 0.4;
+  z-index: 2;
+}
+
+/* FAR CARDS */
+.card-base.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.description {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transition: all 0.5s ease;
+}
+
+.description.exiting {
+    animation: popOut 0.5s forwards;
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    filter: blur(0px);
+  }
+
+  50% {
+    transform: scale(1.2) translateX(20px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translateX(60px);
+    filter: blur(4px);
+  }
+}

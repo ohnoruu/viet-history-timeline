@@ -16,3 +16,7 @@ Note: This will impact Vite dev & build performances.
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+### Deploying to GitHub Pages
+
+This website is currently being deployed on GitHub Pages from the /docs folder. To properly deploy to GitHub Pages, run **`npm run build`** and copy the contents created in /build to /docs using **`cp -r build/. docs/`** after removing the previous /docs folder. 
