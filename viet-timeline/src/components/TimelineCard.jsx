@@ -1,10 +1,15 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Typewriter from './Typewriter';
 import './TimelineCard.css';
 
 export default function TimelineCard({ item, index, active, focused, exiting }) { 
     const offset = index - active;
+    const [lang, setLang] = useState("vi");
+    const [transitioning, setTransitioning] = useState(false);
+
+    const description = lang === "en" ? item.description : item.descriptionViet;
 
     let className = "card-base";
 
@@ -22,6 +27,22 @@ export default function TimelineCard({ item, index, active, focused, exiting }) 
     className += " hidden";
     }
 
+    useEffect(() => {
+    const handleKeyDown = (e) => {
+        if (e.key.toLowerCase() === "a") {
+        setTransitioning(true);
+
+        setTimeout(() => {
+            setLang((prev) => (prev === "en" ? "vi" : "en"));
+            setTransitioning(false);
+        }, 150); // fade duration match CSS
+        }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
+
     return (
     <div className={`${className} ${focused ? "focused-wrapper" : ""}`}>
         
@@ -35,7 +56,7 @@ export default function TimelineCard({ item, index, active, focused, exiting }) 
 
         {focused && (
         <div className={`description ${exiting ? "exiting" : ""}`}>
-            <Typewriter text={item.description} />
+            <Typewriter text={description} />
         </div>
         )}
     </div>

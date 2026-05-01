@@ -25,6 +25,8 @@ function App() {
       { focused && (
         <div className="esc-hint">
           <p>Press ESC to return</p>
+          <p>Press SPACE to fast-forward text</p>
+          <p>Press A to toggle translations</p>
         </div>
       )}
 

@@ -33,7 +33,7 @@ function Particles() {
       </bufferGeometry>
 
       <pointsMaterial 
-        size={0.005} 
+        size={0.020} 
         sizeAttenuation={true}
         color="#b5ecff" 
     />
