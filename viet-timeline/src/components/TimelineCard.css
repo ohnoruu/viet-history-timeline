@@ -70,6 +70,7 @@
 }
 
 .description {
+    position: relative;
     opacity: 1;
     transform: translateX(0) scale(1);
     transition: all 0.5s ease;
@@ -78,6 +79,28 @@
 .description.exiting {
     animation: popOut 0.5s forwards;
 }
+
+.lang-toggle-btn {
+  margin-top: 1rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.lang-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.lang-toggle-btn:active {
+  transform: translateY(0);
+}
+
 
 @keyframes popOut {
   0% {
@@ -95,4 +118,33 @@
     transform: scale(0.3) translateX(60px);
     filter: blur(4px);
   }
+}
+
+.close-focus-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 15;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-focus-btn:hover {
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+.close-focus-btn:active {
+  transform: scale(0.95);
 }

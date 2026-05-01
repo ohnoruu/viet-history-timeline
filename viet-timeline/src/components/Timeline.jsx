@@ -44,6 +44,14 @@ export default function Timeline({ focused, setFocused }) {
 
     return (
         <div className="timeline-wrapper">
+            <button 
+                className="timeline-nav-btn timeline-nav-left"
+                onClick={handlePrev}
+                disabled={index === 0}
+                aria-label="Previous timeline event"
+            >
+                &#8249;
+            </button>
             {timelineData.map((item, i) => (
                 <TimelineCard
                     key={i}
@@ -52,8 +60,17 @@ export default function Timeline({ focused, setFocused }) {
                     active={index}
                     focused={focused && i === index}
                     exiting={exiting && i === index}
+                    setFocused={setFocused}
                 />
             ))}
+            <button 
+                className="timeline-nav-btn timeline-nav-right"
+                onClick={handleNext}
+                disabled={index === timelineData.length - 1}
+                aria-label="Next timeline event"
+            >
+                &#8250;
+            </button>
         </div>
     );
 }
